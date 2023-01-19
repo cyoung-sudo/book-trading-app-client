@@ -1,12 +1,12 @@
 import "./AuthForm.css";
 
-export default function AuthForm({ setUser, setPass, handleSubmit, dispatch }) {
+export default function AuthForm({ setUsername, setPassword, handleSubmit, dispatch }) {
   return (
     <form id="authForm" onSubmit={ handleSubmit }>
       <div className="authForm-field">
         <label htmlFor="authForm-user">Username</label>
         <input
-          onChange={ e => dispatch(setUser(e.target.value)) }
+          onChange={ e => dispatch(setUsername(e.target.value)) }
           type="text" 
           id="authForm-user"
           placeholder="username"/>
@@ -15,7 +15,7 @@ export default function AuthForm({ setUser, setPass, handleSubmit, dispatch }) {
       <div className="authForm-field">
         <label htmlFor="authForm-pass">Password</label>
         <input
-          onChange={ e => dispatch(setPass(e.target.value)) }
+          onChange={ e => dispatch(setPassword(e.target.value)) }
           type="password" 
           id="authForm-pass"
           placeholder="password"/>

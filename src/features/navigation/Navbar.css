@@ -28,7 +28,24 @@
   text-decoration: none;
 }
 
+#navbar-links button {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+  border: none;
+  background: none;
+  color: white;
+  font-size: var(--default-font);
+  text-decoration: none;
+}
+
 #navbar-links a:hover {
+  text-decoration: underline;
+}
+
+#navbar-links button:hover {
+  cursor: pointer;
   text-decoration: underline;
 }
 

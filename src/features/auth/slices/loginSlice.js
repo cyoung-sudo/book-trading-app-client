@@ -8,17 +8,17 @@ export const loginSlice = createSlice({
   },
   reducers: {
     //----- Set username
-    setUser: (state, action) => {
+    setUsername: (state, action) => {
       state.username = action.payload;
     },
     //----- Set password
-    setPass: (state, action) => {
+    setPassword: (state, action) => {
       state.password = action.payload;
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, setPass } = loginSlice.actions;
+export const { setUsername, setPassword } = loginSlice.actions;
 
 export default loginSlice.reducer;

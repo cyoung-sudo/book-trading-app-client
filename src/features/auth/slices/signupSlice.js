@@ -8,17 +8,17 @@ export const signupSlice = createSlice({
   },
   reducers: {
     //----- Set username
-    setUser: (state, action) => {
+    setUsername: (state, action) => {
       state.username = action.payload;
     },
     //----- Set password
-    setPass: (state, action) => {
+    setPassword: (state, action) => {
       state.password = action.payload;
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, setPass } = signupSlice.actions;
+export const { setUsername, setPassword } = signupSlice.actions;
 
 export default signupSlice.reducer;
