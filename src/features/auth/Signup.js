@@ -1,14 +1,14 @@
-import "./Login.css";
+import "./Signup.css";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setUser, setPass } from "./slices/loginSlice";
+import { setUser, setPass } from "./slices/signupSlice";
 // Components
 import AuthForm from "../../components/form/AuthForm";
 
 export default function Login(props) {
   // State
-  const username = useSelector((state) => state.login.username);
-  const password = useSelector((state) => state.login.password);
+  const username = useSelector((state) => state.signup.username);
+  const password = useSelector((state) => state.signup.password);
   // Hooks
   const dispatch = useDispatch();
 
@@ -22,12 +22,12 @@ export default function Login(props) {
   };  
 
   return (
-    <div id="login">
-      <div id="login-header">
-        <h1>Login</h1>
+    <div id="signup">
+      <div id="signup-header">
+        <h1>Signup</h1>
       </div>
 
-      <div id="login-authForm-wrapper">
+      <div id="signup-authForm-wrapper">
         <AuthForm
           setUser={ setUser }
           setPass={ setPass }
