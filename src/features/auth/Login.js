@@ -2,10 +2,11 @@ import "./Login.css";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setUser, setPass } from "./slices/loginSlice";
+import { setPopup } from "../popup/slices/popupSlice";
 // Components
 import AuthForm from "../../components/form/AuthForm";
 
-export default function Login(props) {
+export default function Login() {
   // State
   const username = useSelector((state) => state.login.username);
   const password = useSelector((state) => state.login.password);
@@ -19,6 +20,18 @@ export default function Login(props) {
 
     console.log(username);
     console.log(password);
+
+    if(username === "") {
+      dispatch(setPopup({
+        message: "No username provided",
+        type: "error"
+      }));
+    } else {
+      dispatch(setPopup({
+        message: "Successfully logged-in",
+        type: "success"
+      }));
+    }
   };  
 
   return (

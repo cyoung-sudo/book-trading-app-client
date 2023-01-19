@@ -4,7 +4,7 @@ import Signup from "./features/auth/Signup";
 // Components
 import HomePage from "./components/static/HomePage";
 import NotFound from "./components/error/NotFound";
-import PageWrapper from "./components/wrappers/PageWrapper";
+import PageWrapper from "./components/wrapper/PageWrapper";
 
 const routesConfig = [
   {

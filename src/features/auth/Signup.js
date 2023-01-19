@@ -5,7 +5,7 @@ import { setUser, setPass } from "./slices/signupSlice";
 // Components
 import AuthForm from "../../components/form/AuthForm";
 
-export default function Login(props) {
+export default function Signup() {
   // State
   const username = useSelector((state) => state.signup.username);
   const password = useSelector((state) => state.signup.password);
