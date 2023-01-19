@@ -1,0 +1,37 @@
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  background-color: var(--theme-color);
+  color: white;
+}
+
+#navbar-logo {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#navbar-links {
+  display: flex;
+  list-style: none;
+}
+
+#navbar-links a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+#navbar-links a:hover {
+  text-decoration: underline;
+}
+
+.navbar-active {
+  background-color: var(--lighter-color);
+}
