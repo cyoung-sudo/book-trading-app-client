@@ -9,3 +9,13 @@ export const getAll = async () => {
 
   return res;
 };
+
+//----- Retrieve given user
+export const getUser = async id => {
+  const res = await api.request({
+    method: "GET",
+    url: `/api/user/${id}`
+  });
+
+  return res;
+};

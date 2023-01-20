@@ -4,6 +4,7 @@ import App from "./App";
 import Login from "./features/auth/Login";
 import Signup from "./features/auth/Signup";
 import AllUsers from "./features/user/AllUsers";
+import UserProfile from "./features/user/UserProfile";
 // Components
 import HomePage from "./components/static/HomePage";
 import NotFound from "./components/error/NotFound";
@@ -29,6 +30,10 @@ const routesConfig = [
       {
         path: "users",
         element: <AllUsers/>
+      },
+      {
+        path: "users/:id",
+        element: <UserProfile/>
       }
     ]
   }
