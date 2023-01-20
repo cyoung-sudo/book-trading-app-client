@@ -8,6 +8,7 @@ import { setUsers } from "./slices/userSlice";
 import * as userAPI from "../../apis/userAPI";
 // Components
 import UsersDisplay from "../../components/display/UsersDisplay";
+import Loading from "../../components/static/Loading";
 
 export default function AllUsers() {
   // State
@@ -26,15 +27,19 @@ export default function AllUsers() {
     .catch(err => console.log(err));
   }, []);
 
-  return (
-    <div id="allUsers">
-      <div id="allUsers-header">
-        <h1>Users</h1>
+  if(users) {
+    return (
+      <div id="allUsers">
+        <div id="allUsers-header">
+          <h1>Users</h1>
+        </div>
+  
+        <div id="allUsers-usersDisplay-wrapper">
+          <UsersDisplay users={ users }/>
+        </div>
       </div>
-
-      <div id="allUsers-usersDisplay-wrapper">
-        <UsersDisplay users={ users }/>
-      </div>
-    </div>
-  );
+    );
+  } else {
+    return <Loading/>;
+  }
 };
