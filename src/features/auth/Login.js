@@ -1,7 +1,7 @@
 import "./Login.css";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setUsername, setPassword } from "./slices/loginSlice";
+import { setUsername, setPassword } from "./slices/authSlice";
 import { setPopup } from "../popup/slices/popupSlice";
 import { setUser } from "../../appSlice";
 // Routing
@@ -13,8 +13,7 @@ import AuthForm from "../../components/form/AuthForm";
 
 export default function Login() {
   // State
-  const username = useSelector((state) => state.login.username);
-  const password = useSelector((state) => state.login.password);
+  const { username, password } = useSelector((state) => state.auth);
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();

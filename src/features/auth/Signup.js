@@ -1,7 +1,7 @@
 import "./Signup.css";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setUsername, setPassword } from "./slices/signupSlice";
+import { setUsername, setPassword } from "./slices/authSlice";
 import { setPopup } from "../popup/slices/popupSlice";
 // Routing
 import { useNavigate } from "react-router-dom";
@@ -12,8 +12,7 @@ import AuthForm from "../../components/form/AuthForm";
 
 export default function Signup() {
   // State
-  const username = useSelector((state) => state.signup.username);
-  const password = useSelector((state) => state.signup.password);
+  const { username, password } = useSelector((state) => state.auth);
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
