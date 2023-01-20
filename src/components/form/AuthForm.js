@@ -1,6 +1,11 @@
 import "./AuthForm.css";
+// Redux
+import { useDispatch } from "react-redux";
 
-export default function AuthForm({ setUsername, setPassword, handleSubmit, dispatch }) {
+export default function AuthForm({ setUsername, setPassword, handleSubmit }) {
+  // Hooks
+  const dispatch = useDispatch();
+
   return (
     <form id="authForm" onSubmit={ handleSubmit }>
       <div className="authForm-field">

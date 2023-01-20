@@ -5,9 +5,11 @@ import Login from "./features/auth/Login";
 import Signup from "./features/auth/Signup";
 import AllUsers from "./features/user/AllUsers";
 import UserProfile from "./features/user/UserProfile";
+import UserSettings from "./features/setting/UserSettings";
 // Components
 import HomePage from "./components/static/HomePage";
 import NotFound from "./components/error/NotFound";
+import AuthWrapper from "./components/wrapper/AuthWrapper";
 
 const routesConfig = [
   {
@@ -34,6 +36,14 @@ const routesConfig = [
       {
         path: "users/:id",
         element: <UserProfile/>
+      },
+      {
+        path: "settings",
+        element: (
+          <AuthWrapper>
+            <UserSettings/>
+          </AuthWrapper>
+        )
       }
     ]
   }

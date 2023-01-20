@@ -19,3 +19,18 @@ export const getUser = async id => {
 
   return res;
 };
+
+//----- Edit given user
+export const editUser = async (id, fullName, city, state) => {
+  const res = await api.request({
+    method: "PUT",
+    data: {
+      fullName,
+      city,
+      state
+    },
+    url: `/api/user/${id}`
+  });
+
+  return res;
+};

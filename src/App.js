@@ -1,5 +1,5 @@
 // React
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // Redux
 import { useDispatch } from "react-redux";
 import { setUser } from "./appSlice";
@@ -12,8 +12,11 @@ import Navbar from "./features/navigation/Navbar";
 import Popup from "./features/popup/Popup";
 // Components
 import Footer from "./components/static/Footer";
+import Loading from "./components/static/Loading";
 
 export default function App() {
+  // Loading status
+  const [loaded, setLoaded] = useState(false);
   // Hooks
   const dispatch = useDispatch();
 
@@ -24,16 +27,22 @@ export default function App() {
       if(res.data.success) {
         dispatch(setUser(res.data.user));
       }
+
+      setLoaded(true);
     })
     .catch(err => console.log(err));
   }, []);
 
-  return (
-    <div>
-      <Navbar/>
-      <Popup/>
-      <Outlet/>
-      <Footer/>
-    </div>
-  );
+  if(loaded) {
+    return (
+      <div>
+        <Navbar/>
+        <Popup/>
+        <Outlet/>
+        <Footer/>
+      </div>
+    );
+  } else {
+    return <Loading/>;
+  }
 };

@@ -10,7 +10,7 @@ import * as authAPI from "../../apis/authAPI";
 
 export default function Navbar() {
   // State
-  const user = useSelector((state) => state.app.user);
+  const authUser = useSelector((state) => state.app.authUser);
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ export default function Navbar() {
           </NavLink>
         </li>
 
-        {!user && 
+        {!authUser && 
           <li>
             <NavLink
               to="signup"
@@ -59,7 +59,7 @@ export default function Navbar() {
           </li>
         }
 
-        {!user &&
+        {!authUser &&
           <li>
             <NavLink
               to="login"
@@ -70,7 +70,18 @@ export default function Navbar() {
           </li>
         }
 
-        {user &&
+        {authUser &&
+          <li>
+            <NavLink
+              to="settings"
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined}>
+              Settings
+            </NavLink>
+          </li>
+        }
+
+        {authUser &&
           <li>
             <button onClick={handleLogout}>Logout</button>
           </li>

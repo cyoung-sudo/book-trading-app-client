@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const appSlice = createSlice({
   name: "app",
   initialState: {
-    user: null
+    authUser: null
   },
   reducers: {
     //----- Set authenticated user
     setUser: (state, action) => {
-      state.user = action.payload;
+      state.authUser = action.payload;
     },
     //----- Reset authenticated user
     resetUser: state => {
-      state.user = null;
+      state.authUser = null;
     }
   }
 });
