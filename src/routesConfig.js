@@ -6,6 +6,7 @@ import Signup from "./features/auth/Signup";
 import AllUsers from "./features/user/AllUsers";
 import UserProfile from "./features/user/UserProfile";
 import UserSettings from "./features/setting/UserSettings";
+import AllBooks from "./features/book/AllBooks";
 import AddBook from "./features/book/AddBook";
 // Components
 import HomePage from "./components/static/HomePage";
@@ -37,6 +38,10 @@ const routesConfig = [
       {
         path: "users/:id",
         element: <UserProfile/>
+      },
+      {
+        path: "books",
+        element: <AllBooks/>
       },
       {
         path: "settings",

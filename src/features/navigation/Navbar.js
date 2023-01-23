@@ -48,6 +48,15 @@ export default function Navbar() {
           </NavLink>
         </li>
 
+        <li>
+          <NavLink
+            to="books"
+            className={({ isActive }) =>
+              isActive ? "navbar-active" : undefined}>
+            Books
+          </NavLink>
+        </li>
+
         {!authUser && 
           <li>
             <NavLink
@@ -77,6 +86,17 @@ export default function Navbar() {
               className={({ isActive }) =>
                 isActive ? "navbar-active" : undefined}>
               Add Book
+            </NavLink>
+          </li>
+        }
+
+        {authUser &&
+          <li>
+            <NavLink
+              to={`users/${authUser._id}`}
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined}>
+              Profile
             </NavLink>
           </li>
         }
