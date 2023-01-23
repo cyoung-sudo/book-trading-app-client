@@ -6,6 +6,7 @@ import Signup from "./features/auth/Signup";
 import AllUsers from "./features/user/AllUsers";
 import UserProfile from "./features/user/UserProfile";
 import UserSettings from "./features/setting/UserSettings";
+import AddBook from "./features/book/AddBook";
 // Components
 import HomePage from "./components/static/HomePage";
 import NotFound from "./components/error/NotFound";
@@ -42,6 +43,14 @@ const routesConfig = [
         element: (
           <AuthWrapper>
             <UserSettings/>
+          </AuthWrapper>
+        )
+      },
+      {
+        path: "book/new",
+        element: (
+          <AuthWrapper>
+            <AddBook/>
           </AuthWrapper>
         )
       }

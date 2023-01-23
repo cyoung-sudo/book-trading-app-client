@@ -1,38 +1,45 @@
 // React
 import { useEffect, useState } from "react";
 // Redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPopup } from "../../features/popup/slices/popupSlice";
+import { resetUser } from "../../appSlice";
 // Routing
 import { useNavigate } from "react-router-dom";
+// APIs
+import * as authAPI from "../../apis/authAPI";
 // Components
 import Loading from "../static/Loading";
 
 export default function AuthWrapper({ children }) {
-  // State
-  const authUser = useSelector((state) => state.app.authUser);
-  // Loading status
-  const [loaded, setLoaded] = useState(false);
+  // Requested data
+  const [authed, setAuthed] = useState(false);
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   //----- Check authentication on load
   useEffect(() => {
-    if(!authUser) {
-      dispatch(setPopup({
-        message: "Authentication required",
-        type: "error"
-      }));
-
-      // Redirect to home page
-      navigate("/");
-    }
-
-    setLoaded(true);
+    authAPI.getUser()
+    .then(res => {
+      if(res.data.success) {
+        setAuthed(true);
+      } else {
+        dispatch(setPopup({
+          message: "Authentication required",
+          type: "error"
+        }));
+  
+        dispatch(resetUser());
+  
+        // Redirect to home page
+        navigate("/");
+      }
+    })
+    .catch(err => console.log(err));
   }, []);
 
-  if(loaded && authUser) {
+  if(authed) {
     return children;
   } else {
     return <Loading/>;

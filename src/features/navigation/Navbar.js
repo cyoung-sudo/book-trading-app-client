@@ -73,6 +73,17 @@ export default function Navbar() {
         {authUser &&
           <li>
             <NavLink
+              to="book/new"
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined}>
+              Add Book
+            </NavLink>
+          </li>
+        }
+
+        {authUser &&
+          <li>
+            <NavLink
               to="settings"
               className={({ isActive }) =>
                 isActive ? "navbar-active" : undefined}>

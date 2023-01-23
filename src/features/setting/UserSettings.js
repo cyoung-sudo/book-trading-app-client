@@ -3,6 +3,7 @@ import "./UserSettings.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setFullName, setCity, setState } from "./slices/settingSlice";
 import { setPopup } from "../popup/slices/popupSlice";
+import { resetUser } from "../../appSlice";
 // Routing
 import { useNavigate } from "react-router-dom";
 // APIs
@@ -40,6 +41,8 @@ export default function UserSettings() {
           message: res.message,
           type: "error"
         }));
+
+        dispatch(resetUser());
 
         // Redirect to home page
         navigate("/");

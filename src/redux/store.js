@@ -4,6 +4,7 @@ import appReducer from "../appSlice";
 import authReducer from "../features/auth/slices/authSlice";
 import popupReducer from "../features/popup/slices/popupSlice";
 import userReducer from "../features/user/slices/userSlice";
+import bookReducer from "../features/book/slices/bookSlice";
 import settingReducer from "../features/setting/slices/settingSlice";
 
 export default configureStore({
@@ -12,6 +13,7 @@ export default configureStore({
     auth: authReducer,
     popup: popupReducer,
     user: userReducer,
+    book: bookReducer,
     setting: settingReducer
   }
 });
