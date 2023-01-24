@@ -1,7 +1,7 @@
 import "./UserSettings.css";
+import { useState } from "react";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setFullName, setCity, setState } from "./slices/settingSlice";
 import { setPopup } from "../popup/slices/popupSlice";
 import { resetUser } from "../../appSlice";
 // Routing
@@ -13,9 +13,12 @@ import * as userAPI from "../../apis/userAPI";
 import UserSettingsForm from "../../components/form/UserSettingsForm";
 
 export default function UserSettings() {
+  // Controlled inputs
+  const [fullName, setFullName] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
   // State
   const authUser  = useSelector((state) => state.app.authUser);
-  const { fullName, city, state}  = useSelector((state) => state.setting);
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();

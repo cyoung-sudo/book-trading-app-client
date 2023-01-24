@@ -1,9 +1,6 @@
 import "./AllUsers.css";
 // React
-import { useEffect } from "react";
-// Redux
-import { useSelector, useDispatch } from "react-redux";
-import { setUsers } from "./slices/userSlice";
+import { useState, useEffect } from "react";
 // APIs
 import * as userAPI from "../../apis/userAPI";
 // Components
@@ -11,17 +8,15 @@ import UsersDisplay from "../../components/display/UsersDisplay";
 import Loading from "../../components/static/Loading";
 
 export default function AllUsers() {
-  // State
-  const users = useSelector((state) => state.user.users);
-  // Hooks
-  const dispatch = useDispatch();
+  // Requested data
+  const [users, setUsers] = useState(null)
 
   //----- Retrieve users on load
   useEffect(() => {
     userAPI.getAll()
     .then(res => {
       if(res.data.success) {
-        dispatch(setUsers(res.data.users));
+        setUsers(res.data.users);
       }
     })
     .catch(err => console.log(err));

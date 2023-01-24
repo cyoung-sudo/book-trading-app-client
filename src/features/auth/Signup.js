@@ -1,7 +1,8 @@
 import "./Signup.css";
+// React
+import { useState } from "react";
 // Redux
-import { useSelector, useDispatch } from "react-redux";
-import { setUsername, setPassword } from "./slices/authSlice";
+import { useDispatch } from "react-redux";
 import { setPopup } from "../popup/slices/popupSlice";
 // Routing
 import { useNavigate } from "react-router-dom";
@@ -11,8 +12,9 @@ import * as authAPI from "../../apis/authAPI";
 import AuthForm from "../../components/form/AuthForm";
 
 export default function Signup() {
-  // State
-  const { username, password } = useSelector((state) => state.auth);
+  // Controlled inputs
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();

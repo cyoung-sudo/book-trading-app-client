@@ -1,9 +1,8 @@
 import "./AddBook.css";
 // React
-import { useEffect } from "react";
+import { useState } from "react";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setTitle, setDescription } from "./slices/bookSlice";
 import { setPopup } from "../popup/slices/popupSlice";
 import { resetUser } from "../../appSlice";
 // Routing
@@ -15,8 +14,10 @@ import * as authAPI from "../../apis/authAPI";
 import BookForm from "../../components/form/BookForm";
 
 export default function AddBook() {
+  // Controlled inputs
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   // State
-  const { title, description } = useSelector((state) => state.book);
   const authUser = useSelector((state) => state.app.authUser);
   // Hooks
   const dispatch = useDispatch();

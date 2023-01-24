@@ -2,8 +2,7 @@ import "./UserProfile.css";
 // React
 import { useState, useEffect } from "react";
 // Redux
-import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "./slices/userSlice";
+import { useDispatch } from "react-redux";
 import { setPopup } from "../popup/slices/popupSlice";
 // Routing
 import { useParams, useNavigate } from "react-router-dom";
@@ -16,9 +15,8 @@ import Loading from "../../components/static/Loading";
 
 export default function UserProfile() {
   // Requested data
+  const [user, setUser] = useState(null);
   const [books, setBooks] = useState(null);
-  // State
-  const user = useSelector((state) => state.user.user);
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +28,7 @@ export default function UserProfile() {
     userAPI.getUser(id)
     .then(res => {
       if(res.data.success) {
-        dispatch(setUser(res.data.user));
+        setUser(res.data.user);
 
         // Retrieve all books for user
         return bookAPI.getForUser(id);
