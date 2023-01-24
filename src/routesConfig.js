@@ -8,6 +8,7 @@ import UserProfile from "./features/user/UserProfile";
 import UserSettings from "./features/setting/UserSettings";
 import AllBooks from "./features/book/AllBooks";
 import AddBook from "./features/book/AddBook";
+import AllTrades from "./features/trade/AllTrades";
 import Request from "./features/trade/Request";
 import Offer from "./features/trade/Offer";
 // Components
@@ -44,6 +45,10 @@ const routesConfig = [
       {
         path: "books",
         element: <AllBooks/>
+      },
+      {
+        path: "trades",
+        element: <AllTrades/>
       },
       {
         path: "trades/request",

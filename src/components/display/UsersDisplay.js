@@ -1,4 +1,4 @@
-import "./UsersDisplay";
+import "./UsersDisplay.css";
 // Routing
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ export default function UsersDisplay({ users }) {
     return (
       <ul id="usersDisplay">
         {users.map((user, idx) => (
-          <li key={idx}>
+          <li key={ idx }>
             <div>{ user.username }</div>
             <div>Joined: { user.createdAt }</div>
             <div>

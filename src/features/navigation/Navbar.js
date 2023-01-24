@@ -57,6 +57,15 @@ export default function Navbar() {
           </NavLink>
         </li>
 
+        <li>
+          <NavLink
+            to="trades"
+            className={({ isActive }) =>
+              isActive ? "navbar-active" : undefined}>
+            Trades
+          </NavLink>
+        </li>
+
         {!authUser && 
           <li>
             <NavLink
