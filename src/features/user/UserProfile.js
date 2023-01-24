@@ -11,16 +11,22 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import * as authAPI from "../../apis/authAPI";
 import * as userAPI from "../../apis/userAPI";
 import * as bookAPI from "../../apis/bookAPI";
+import * as tradeAPI from "../../apis/tradeAPI";
 // Components
 import BooksDisplay from "../../components/display/BooksDisplay";
+import TradesDisplay from "../../components/display/TradesDisplay";
 import Loading from "../../components/static/Loading";
 
 export default function UserProfile() {
   // Requested data
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState(null);
+  const [requests, setRequests] = useState(null);
+  const [offers, setOffers] = useState(null);
   // Profile ownership
-  const [ownership, setOwnership] = useState(false)
+  const [ownership, setOwnership] = useState(false);
+  // Display mode (books, requests, offers)
+  const [mode, setMode] = useState("books");
   // State
   const { authUser, refreshToggle }  = useSelector((state) => state.app);
   // Hooks
@@ -33,6 +39,8 @@ export default function UserProfile() {
     // Reset state (loading data)
     setUser(null);
     setBooks(null);
+    setRequests(null);
+    setOffers(null);
 
     // Check authentication
     authAPI.getUser()
@@ -56,6 +64,26 @@ export default function UserProfile() {
       })
       .then(res => {
         if(res.message) {
+          return { message: res.message };
+        } else if(res.data.success) {
+          setBooks(res.data.books);
+
+          // Retrieve all trades for initiator
+          return tradeAPI.getForInitiator(id);
+        }
+      })
+      .then(res => {
+        if(res.message) {
+          return { message: res.message };
+        } else if(res.data.success) {
+          setRequests(res.data.trades);
+
+          // Retrieve all trades for recipient
+          return tradeAPI.getForRecipient(id);
+        }
+      })
+      .then(res => {
+        if(res.message) {
           // Invalid userId
           dispatch(setPopup({
             message: res.message,
@@ -65,7 +93,7 @@ export default function UserProfile() {
           // Redirect to users page
           navigate("/users")
         } else if(res.data.success) {
-          setBooks(res.data.books);
+          setOffers(res.data.trades);
         }
       })
       .catch(err => console.log(err));
@@ -89,7 +117,7 @@ export default function UserProfile() {
     .catch(err => console.log(err));
   };
 
-  if(user && books) {
+  if(user && books && requests && offers) {
     return (
       <div id="userProfile">
         <div id="userProfile-header">
@@ -106,13 +134,33 @@ export default function UserProfile() {
           </div>
         }
 
-        <div id="userProfile-booksDisplay-wrapper">
-          <BooksDisplay 
-            books={ books }
-            ownership={ ownership }
-            mode="profile"
-            handleDelete={ handleDelete }/>
+        <div id="userProfile-modes">
+          <button onClick={() => setMode("books")}>Books</button>
+          <button onClick={() => setMode("requests")}>Requests</button>
+          <button onClick={() => setMode("offers")}>Offers</button>
         </div>
+
+        {(mode === "books") &&
+          <div id="userProfile-booksDisplay-wrapper">
+            <BooksDisplay 
+              books={ books }
+              ownership={ ownership }
+              mode="profile"
+              handleDelete={ handleDelete }/>
+          </div>
+        }
+
+        {(mode === "requests") && 
+          <div id="userProfile-requestsDisplay-wrapper">
+            <TradesDisplay trades={ requests }/>
+          </div>
+        }
+
+        {(mode === "offers") && 
+          <div id="userProfile-offersDisplay-wrapper">
+            <TradesDisplay trades={ offers }/>
+          </div>
+        }
       </div>
     );
   } else {

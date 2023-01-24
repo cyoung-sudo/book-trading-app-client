@@ -27,3 +27,23 @@ export const create = async (initiatorUsername, initiatorId, offer, recipientUse
 
   return res;
 };
+
+//----- Retrieve all trades for given initiator
+export const getForInitiator = async userId => {
+  const res = await api.request({
+    method: "GET",
+    url: `/api/trade/initiator/${userId}`
+  });
+
+  return res;
+};
+
+//----- Retrieve all trades for given recipient
+export const getForRecipient = async userId => {
+  const res = await api.request({
+    method: "GET",
+    url: `/api/trade/recipient/${userId}`
+  });
+
+  return res;
+};
