@@ -2,11 +2,13 @@ import "./UserProfile.css";
 // React
 import { useState, useEffect } from "react";
 // Redux
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setPopup } from "../popup/slices/popupSlice";
+import { refresh } from "../../appSlice";
 // Routing
 import { useParams, useNavigate } from "react-router-dom";
 // APIs
+import * as authAPI from "../../apis/authAPI";
 import * as userAPI from "../../apis/userAPI";
 import * as bookAPI from "../../apis/bookAPI";
 // Components
@@ -17,6 +19,10 @@ export default function UserProfile() {
   // Requested data
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState(null);
+  // Profile ownership
+  const [ownership, setOwnership] = useState(false)
+  // State
+  const { authUser, refreshToggle }  = useSelector((state) => state.app);
   // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,34 +30,64 @@ export default function UserProfile() {
 
   //----- Retrieve user on load
   useEffect(() => {
-    // Retrieve given user
-    userAPI.getUser(id)
+    // Reset state (loading data)
+    setUser(null);
+    setBooks(null);
+
+    // Check authentication
+    authAPI.getUser()
+    .then(res => {
+      // Check profile ownership
+      if(res.data.success && (id === authUser._id)) {
+        setOwnership(true);
+      }
+      
+      // Retrieve given user
+      userAPI.getUser(id)
+      .then(res => {
+        if(res.data.success) {
+          setUser(res.data.user);
+
+          // Retrieve all books for user
+          return bookAPI.getForUser(id);
+        } else {
+          return { message: res.data.message };
+        }
+      })
+      .then(res => {
+        if(res.message) {
+          // Invalid userId
+          dispatch(setPopup({
+            message: res.message,
+            type: "error"
+          }));
+
+          // Redirect to users page
+          navigate("/users")
+        } else if(res.data.success) {
+          setBooks(res.data.books);
+        }
+      })
+      .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
+  }, [refreshToggle]);
+
+  //----- Delete given book
+  const handleDelete = id => {
+    bookAPI.deleteBook(id)
     .then(res => {
       if(res.data.success) {
-        setUser(res.data.user);
-
-        // Retrieve all books for user
-        return bookAPI.getForUser(id);
-      } else {
-        return { message: res.data.message };
-      }
-    })
-    .then(res => {
-      if(res.message) {
-        // Invalid userId
         dispatch(setPopup({
-          message: res.message,
-          type: "error"
+          message: "Book deleted",
+          type: "success"
         }));
 
-        // Redirect to users page
-        navigate("/users")
-      } else if(res.data.success) {
-        setBooks(res.data.books);
+        dispatch(refresh());
       }
     })
     .catch(err => console.log(err));
-  }, []);
+  };
 
   if(user && books) {
     return (
@@ -64,7 +100,10 @@ export default function UserProfile() {
         </div>
 
         <div id="userProfile-booksDisplay-wrapper">
-          <BooksDisplay books={ books }/>
+          <BooksDisplay 
+            books={ books }
+            ownership={ ownership }
+            handleDelete={ handleDelete }/>
         </div>
       </div>
     );

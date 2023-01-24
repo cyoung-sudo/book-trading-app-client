@@ -47,8 +47,8 @@ export default function Login() {
 
           dispatch(setUser(res.data.user));
 
-          // Redirect to home page
-          navigate("/")
+          // Redirect to profile page
+          navigate(`/users/${res.data.user._id}`);
         } else {
           dispatch(setPopup({
             message: res.data.message,

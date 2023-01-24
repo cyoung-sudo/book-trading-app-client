@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 // APIs
 import * as authAPI from "../../apis/authAPI";
 import * as userAPI from "../../apis/userAPI";
+import * as bookAPI from "../../apis/bookAPI";
 // Components
 import UserSettingsForm from "../../components/form/UserSettingsForm";
 
@@ -59,6 +60,40 @@ export default function UserSettings() {
     .catch(err => console.log(err));
   };
 
+  //----- Delete user account
+  const handleDelete = () => {
+    // Check authentication
+    authAPI.getUser()
+    .then(res => {
+      let result = window.confirm("Are you sure you want to delete this account?");
+      if(result) {
+        // Delete all books for user
+        bookAPI.deleteForUser(authUser._id)
+        .then(res => {
+          // Delete user
+          return userAPI.deleteUser(authUser._id);
+        })
+        .then(res => {
+          // Logout
+          return authAPI.logout();
+        })
+        .then(res => {
+          dispatch(setPopup({
+            message: "Account deleted",
+            type: "success"
+          }));
+
+          dispatch(resetUser());
+
+          // Redirect to home page
+          navigate("/");
+        })
+        .catch(err => console.log(err));
+      }
+    })
+    .catch(err => console.log(err));
+  };
+
   return (
     <div id="userSettings">
       <div id="userSettings-header">
@@ -71,6 +106,13 @@ export default function UserSettings() {
           setCity={ setCity }
           setState={ setState }
           handleSubmit={ handleSubmit }/>
+      </div>
+
+      <div id="userSettings-options">
+        <div className="userSettings-option">
+          <div>Delete Account?</div>
+          <button onClick={ handleDelete }>Delete</button>
+        </div>
       </div>
     </div>
   );

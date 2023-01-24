@@ -3,7 +3,7 @@ import "./BooksDisplay.css";
 // Routing
 import { Link } from "react-router-dom";
 
-export default function BooksDisplay({ books }) {
+export default function BooksDisplay({ books, ownership, handleDelete }) {
   if(books) {
     return (
       <ul id="booksDisplay">
@@ -15,6 +15,9 @@ export default function BooksDisplay({ books }) {
             <div>Date added: { book.createdAt }</div>
             <div>
               <Link to={`/users/${book.ownerId}`}>View Owner Profile</Link>
+              {(ownership === true) && 
+                <button onClick={() => handleDelete(book._id)}>Delete</button>
+              }
             </div>
           </li>
         ))}

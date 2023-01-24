@@ -1,5 +1,15 @@
 import api from "./configs/axiosConfig";
 
+//----- Retrieve all books
+export const getAll = async () => {
+  const res = await api.request({
+    method: "GET",
+    url: "/api/book"
+  });
+
+  return res;
+};
+
 //----- Create book
 export const create = async (title, description, ownerUsername, ownerId) => {
   const res = await api.request({
@@ -16,10 +26,11 @@ export const create = async (title, description, ownerUsername, ownerId) => {
   return res;
 };
 
-//----- Retrieve all books
-export const getAll = async () => {
+//----- Delete given book
+export const deleteBook = async id => {
   const res = await api.request({
-    method: "GET",
+    method: "DELETE",
+    data: { id },
     url: "/api/book"
   });
 
@@ -30,6 +41,16 @@ export const getAll = async () => {
 export const getForUser = async userId => {
   const res = await api.request({
     method: "GET",
+    url: `/api/book/${userId}`
+  });
+
+  return res;
+};
+
+//----- Delete all books for user
+export const deleteForUser = async userId => {
+  const res = await api.request({
+    method: "DELETE",
     url: `/api/book/${userId}`
   });
 

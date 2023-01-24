@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const appSlice = createSlice({
   name: "app",
   initialState: {
-    authUser: null
+    authUser: null,
+    refreshToggle: false
   },
   reducers: {
     //----- Set authenticated user
@@ -13,11 +14,15 @@ export const appSlice = createSlice({
     //----- Reset authenticated user
     resetUser: state => {
       state.authUser = null;
+    },
+    //----- Manual refresh
+    refresh: state => {
+      state.refreshToggle = !state.refreshToggle;
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, resetUser } = appSlice.actions;
+export const { setUser, resetUser, refresh } = appSlice.actions;
 
 export default appSlice.reducer;

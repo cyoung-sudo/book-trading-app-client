@@ -34,3 +34,13 @@ export const editUser = async (id, fullName, city, state) => {
 
   return res;
 };
+
+//----- Delete given user
+export const deleteUser = async id => {
+  const res = await api.request({
+    method: "DELETE",
+    url: `/api/user/${id}`
+  });
+
+  return res;
+};

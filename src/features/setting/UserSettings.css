@@ -5,3 +5,7 @@
   min-height: calc(100vh - var(--navbar-height));
   padding: 2rem 1rem;
 }
+
+.userSettings-option {
+  display: flex;
+}
