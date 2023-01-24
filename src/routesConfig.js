@@ -8,6 +8,8 @@ import UserProfile from "./features/user/UserProfile";
 import UserSettings from "./features/setting/UserSettings";
 import AllBooks from "./features/book/AllBooks";
 import AddBook from "./features/book/AddBook";
+import Request from "./features/trade/Request";
+import Offer from "./features/trade/Offer";
 // Components
 import HomePage from "./components/static/HomePage";
 import NotFound from "./components/error/NotFound";
@@ -42,6 +44,22 @@ const routesConfig = [
       {
         path: "books",
         element: <AllBooks/>
+      },
+      {
+        path: "trades/request",
+        element: (
+          <AuthWrapper>
+            <Request/>
+          </AuthWrapper>
+        )
+      },
+      {
+        path: "trades/offer",
+        element: (
+          <AuthWrapper>
+            <Offer/>
+          </AuthWrapper>
+        )
       },
       {
         path: "settings",

@@ -28,7 +28,9 @@ export default function AllBooks() {
       </div>
 
       <div id="allBooks-booksDisplay-wrapper">
-        <BooksDisplay books={ books }/>
+        <BooksDisplay 
+          books={ books }
+          mode="display"/>
       </div>
     </div>
   );

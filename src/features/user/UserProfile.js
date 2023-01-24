@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPopup } from "../popup/slices/popupSlice";
 import { refresh } from "../../appSlice";
 // Routing
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 // APIs
 import * as authAPI from "../../apis/authAPI";
 import * as userAPI from "../../apis/userAPI";
@@ -99,10 +99,18 @@ export default function UserProfile() {
           <div>State: {user.state ? user.state : "unknown"}</div>
         </div>
 
+        {/**Displays for owner when session expires**/}
+        {authUser && !ownership && (books.length > 0) &&
+          <div id="userProfile-options">
+            <Link to={`/trades/request`} state={{ recipientUsername: user.username, recipientId: user._id }}>Trade</Link>
+          </div>
+        }
+
         <div id="userProfile-booksDisplay-wrapper">
           <BooksDisplay 
             books={ books }
             ownership={ ownership }
+            mode="profile"
             handleDelete={ handleDelete }/>
         </div>
       </div>
