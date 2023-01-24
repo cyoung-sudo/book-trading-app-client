@@ -123,7 +123,7 @@ export default function Navbar() {
 
         {authUser &&
           <li>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={ handleLogout }>Logout</button>
           </li>
         }
       </ul>

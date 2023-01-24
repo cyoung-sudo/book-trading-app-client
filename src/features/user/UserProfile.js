@@ -93,7 +93,7 @@ export default function UserProfile() {
     return (
       <div id="userProfile">
         <div id="userProfile-header">
-          <h1>{user.username}'s Profile</h1>
+          <h1>{ user.username }'s Profile</h1>
           <div>Full Name: {user.fullName ? user.fullName : "unknown"}</div>
           <div>City: {user.city ? user.city : "unknown"}</div>
           <div>State: {user.state ? user.state : "unknown"}</div>

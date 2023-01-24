@@ -6,7 +6,7 @@ export default function BookForm({ setTitle, setDescription, handleSubmit }) {
       <div className="bookForm-field">
         <label htmlFor="bookForm-title">Title</label>
         <input
-          onChange={ e => setTitle(e.target.value) }
+          onChange={e => setTitle(e.target.value)}
           type="text" 
           id="bookForm-title"
           placeholder="title"/>
@@ -15,7 +15,7 @@ export default function BookForm({ setTitle, setDescription, handleSubmit }) {
       <div className="bookForm-field">
         <label htmlFor="bookForm-description">Description</label>
         <input
-          onChange={ e => setDescription(e.target.value) }
+          onChange={e => setDescription(e.target.value)}
           type="text" 
           id="bookForm-description"
           placeholder="description"/>

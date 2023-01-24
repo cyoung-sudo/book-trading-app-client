@@ -8,7 +8,7 @@ export default function BooksDisplay({ books, ownership, mode, handleDelete , ad
     return (
       <ul id="booksDisplay">
         {books.map((book, idx) => (
-          <li key={idx}>
+          <li key={ idx }>
             <div>{ book.title }</div>
             <div>Description: { book.description }</div>
             <div>Owner: { book.ownerUsername }</div>

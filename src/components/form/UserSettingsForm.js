@@ -11,7 +11,7 @@ export default function UserSettingsForm({ setFullName, setCity, setState, handl
       <div className="userSettingsForm-field">
         <label htmlFor="userSettingsForm-fullName">Full Name</label>
         <input
-          onChange={ e => setFullName(e.target.value) }
+          onChange={e => setFullName(e.target.value)}
           type="text" 
           id="userSettingsForm-fullName"
           placeholder={ authUser.fullName }/>
@@ -20,7 +20,7 @@ export default function UserSettingsForm({ setFullName, setCity, setState, handl
       <div className="userSettingsForm-field">
         <label htmlFor="userSettingsForm-city">City</label>
         <input
-          onChange={ e => setCity(e.target.value) }
+          onChange={e => setCity(e.target.value)}
           type="text" 
           id="userSettingsForm-city"
           placeholder={ authUser.city }/>
@@ -29,7 +29,7 @@ export default function UserSettingsForm({ setFullName, setCity, setState, handl
       <div className="userSettingsForm-field">
         <label htmlFor="userSettingsForm-state">State</label>
         <input
-          onChange={ e => setState(e.target.value) }
+          onChange={e => setState(e.target.value)}
           type="text" 
           id="userSettingsForm-state"
           placeholder={ authUser.state }/>

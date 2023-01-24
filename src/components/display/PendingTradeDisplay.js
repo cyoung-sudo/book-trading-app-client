@@ -21,7 +21,7 @@ export default function PendingTradeDisplay({ books, mode, active, removeBook, h
 
         {active &&
           <div id="pendingTradeDisplay-submit">
-            <button onClick={handleSubmit}>
+            <button onClick={ handleSubmit }>
               {(mode === "request") ? "Offer" : "Trade"}
             </button>
           </div>
