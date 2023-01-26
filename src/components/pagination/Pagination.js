@@ -12,7 +12,7 @@ export default function Pagination({ items, itemsPerPage, setPageContent }) {
     let end = start + itemsPerPage;
     let pageContent = items.slice(start, end);
     setPageContent(pageContent);
-  }, [page]);
+  }, [page, items]);
 
   return (
     <div className="pagination">

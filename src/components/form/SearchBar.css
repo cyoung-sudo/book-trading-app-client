@@ -1,0 +1,12 @@
+.searchBar-properties {
+  display: flex;
+}
+
+.searchBar-form {
+  display: flex;
+}
+
+.searchBar-active {
+  background-color: gray;
+  color: white;
+}

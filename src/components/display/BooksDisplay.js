@@ -5,17 +5,27 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 // Components
 import Pagination from "../pagination/Pagination";
+import SearchBar from "../form/SearchBar";
 
 export default function BooksDisplay({ books, ownership, mode, handleDelete , addBook }) {
+  // Search bar
+  const [searchContent, setSearchContent] = useState([]);
   // Pagination
   const [pageContent, setPageContent] = useState([]);
 
   if(books) {
     return (
       <ul id="booksDisplay">
+        <div id="booksDisplay-searchBar-wrapper">
+          <SearchBar
+            items={ books }
+            itemProperties={["title", "description", "ownerUsername"]}
+            setSearchContent={ setSearchContent }/>
+        </div>
+
         <div id="booksDisplay-pagination-wrapper">
           <Pagination
-            items={ books }
+            items={ searchContent }
             itemsPerPage={ 10 }
             setPageContent={ setPageContent }/>
         </div>
