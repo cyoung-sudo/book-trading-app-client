@@ -1,13 +1,26 @@
 import "./BooksDisplay.css";
-
+// React
+import { useState } from "react";
 // Routing
 import { Link } from "react-router-dom";
+// Components
+import Pagination from "../pagination/Pagination";
 
-export default function BooksDisplay({ books, ownership, mode, handleDelete , addBook}) {
+export default function BooksDisplay({ books, ownership, mode, handleDelete , addBook }) {
+  // Pagination
+  const [pageContent, setPageContent] = useState([]);
+
   if(books) {
     return (
       <ul id="booksDisplay">
-        {books.map((book, idx) => (
+        <div id="booksDisplay-pagination-wrapper">
+          <Pagination
+            items={ books }
+            itemsPerPage={ 10 }
+            setPageContent={ setPageContent }/>
+        </div>
+
+        {pageContent.map((book, idx) => (
           <li key={ idx }>
             <div>{ book.title }</div>
             <div>Description: { book.description }</div>
