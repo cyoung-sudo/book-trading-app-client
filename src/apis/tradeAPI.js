@@ -38,6 +38,16 @@ export const deleteTrade = async id => {
   return res;
 };
 
+//----- Delete all trades for given user
+export const deleteForUser = async userId => {
+  const res = await api.request({
+    method: "DELETE",
+    url: `/api/trade/user/${userId}`
+  });
+
+  return res;
+};
+
 //----- Retrieve all trades for given initiator
 export const getForInitiator = async userId => {
   const res = await api.request({

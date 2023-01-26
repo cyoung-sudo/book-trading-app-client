@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import * as authAPI from "../../apis/authAPI";
 import * as userAPI from "../../apis/userAPI";
 import * as bookAPI from "../../apis/bookAPI";
+import * as tradeAPI from "../../apis/tradeAPI";
 // Components
 import UserSettingsForm from "../../components/form/UserSettingsForm";
 
@@ -67,8 +68,12 @@ export default function UserSettings() {
     .then(res => {
       let result = window.confirm("Are you sure you want to delete this account?");
       if(result) {
-        // Delete all books for user
-        bookAPI.deleteForUser(authUser._id)
+        // Delete all trades for user
+        tradeAPI.deleteForUser(authUser._id)
+        .then(res => {
+          // Delete all books for user
+          return bookAPI.deleteForUser(authUser._id);
+        })
         .then(res => {
           // Delete user
           return userAPI.deleteUser(authUser._id);
