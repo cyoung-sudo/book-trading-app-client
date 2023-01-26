@@ -37,6 +37,20 @@ export const deleteBook = async id => {
   return res;
 };
 
+//----- Update given book
+export const updateBook = async (id, ownerUsername, ownerId) => {
+  const res = await api.request({
+    method: "PUT",
+    data: {
+      ownerUsername,
+      ownerId
+    },
+    url: `/api/book/${id}`
+  });
+
+  return res;
+};
+
 //----- Retrieve all books for user
 export const getForUser = async userId => {
   const res = await api.request({

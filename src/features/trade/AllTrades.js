@@ -30,7 +30,9 @@ export default function AllTrades() {
         </div>
   
         <div id="allTrades-tradesDisplay-wrapper">
-          <TradesDisplay trades={ trades }/>
+          <TradesDisplay 
+            trades={ trades }
+            mode="display"/>
         </div>
       </div>
     );

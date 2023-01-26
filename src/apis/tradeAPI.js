@@ -28,6 +28,16 @@ export const create = async (initiatorUsername, initiatorId, offer, recipientUse
   return res;
 };
 
+//----- Delete trade
+export const deleteTrade = async id => {
+  const res = await api.request({
+    method: "DELETE",
+    url: `/api/trade/${id}`
+  });
+
+  return res;
+};
+
 //----- Retrieve all trades for given initiator
 export const getForInitiator = async userId => {
   const res = await api.request({
@@ -43,6 +53,16 @@ export const getForRecipient = async userId => {
   const res = await api.request({
     method: "GET",
     url: `/api/trade/recipient/${userId}`
+  });
+
+  return res;
+};
+
+//----- Delete all trades related to given book
+export const deleteRelated = async bookId => {
+  const res = await api.request({
+    method: "DELETE",
+    url: `/api/trade/deleteRelated/${bookId}`
   });
 
   return res;

@@ -117,6 +117,55 @@ export default function UserProfile() {
     .catch(err => console.log(err));
   };
 
+  //----- Accept trade
+  const handleAccept = trade => {
+    // Swap request ownership
+    let swapRequest = [];
+    trade.request.forEach(book => {
+      swapRequest.push(bookAPI.updateBook(book.bookId, trade.initiatorUsername, trade.initiatorId));
+    });
+
+    // Swap offer ownership
+    let swapOffer = [];
+    trade.offer.forEach(book => {
+      swapOffer.push(bookAPI.updateBook(book.bookId, trade.recipientUsername, trade.recipientId));
+    });
+
+    // Delete related trades
+    let deleteRelated = [];
+    let tradedBooks = [...trade.request, ...trade.offer];
+    tradedBooks.forEach(book => {
+      deleteRelated.push(tradeAPI.deleteRelated(book.bookId));
+    });
+
+    Promise.all([...swapRequest, ...swapOffer, ...deleteRelated])
+    .then(() => {
+      dispatch(setPopup({
+        message: "Trade accepted",
+        type: "success"
+      }));
+
+      dispatch(refresh());
+    })
+    .catch(err => console.log(err));
+  }; 
+
+  //----- Decline trade
+  const handleDecline = tradeId => {
+    tradeAPI.deleteTrade(tradeId)
+      .then(res => {
+        if(res.data.success) {
+          dispatch(setPopup({
+            message: "Trade declined",
+            type: "success"
+          }));
+
+          dispatch(refresh());
+        }
+      })
+      .catch(err => console.log(err));
+  };
+
   if(user && books && requests && offers) {
     return (
       <div id="userProfile">
@@ -152,13 +201,20 @@ export default function UserProfile() {
 
         {(mode === "requests") && 
           <div id="userProfile-requestsDisplay-wrapper">
-            <TradesDisplay trades={ requests }/>
+            <TradesDisplay 
+              trades={ requests }
+              mode="profile"/>
           </div>
         }
 
         {(mode === "offers") && 
           <div id="userProfile-offersDisplay-wrapper">
-            <TradesDisplay trades={ offers }/>
+            <TradesDisplay 
+              trades={ offers }
+              ownership={ ownership }
+              mode="profile"
+              handleAccept={ handleAccept }
+              handleDecline={ handleDecline }/>
           </div>
         }
       </div>
