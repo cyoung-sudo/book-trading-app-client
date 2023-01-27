@@ -1,4 +1,6 @@
 import "./Navbar.css";
+// React
+import { useState } from "react";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setPopup } from "../popup/slices/popupSlice";
@@ -7,8 +9,12 @@ import { resetUser } from "../../appSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 // APIs
 import * as authAPI from "../../apis/authAPI";
+// Icons
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function Navbar() {
+  // Collapse toggle
+  const [collapse, setCollapse] = useState(true);
   // State
   const authUser = useSelector((state) => state.app.authUser);
   // Hooks
@@ -38,6 +44,13 @@ export default function Navbar() {
         Book Trading Club
       </div>
 
+      <div id="navbar-collapse-toggle">
+        <button onClick={() => setCollapse(state => !state)}>
+          <GiHamburgerMenu size={25}/>
+        </button>
+      </div>
+
+      {/*----- Expanded links -----*/}
       <ul id="navbar-links">
         <li>
           <NavLink
@@ -127,6 +140,101 @@ export default function Navbar() {
           </li>
         }
       </ul>
+      {/*----- /Expanded links -----*/}
+
+      {/*----- Collapsed links -----*/}
+      {!collapse &&
+        <ul id="navbar-collapsed-links">
+          <li>
+            <NavLink
+              to="users"
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined}>
+              Users
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="books"
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined}>
+              Books
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="trades"
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined}>
+              Trades
+            </NavLink>
+          </li>
+
+          {!authUser && 
+            <li>
+              <NavLink
+                to="signup"
+                className={({ isActive }) =>
+                  isActive ? "navbar-active" : undefined}>
+                Signup
+              </NavLink>
+            </li>
+          }
+
+          {!authUser &&
+            <li>
+              <NavLink
+                to="login"
+                className={({ isActive }) =>
+                  isActive ? "navbar-active" : undefined}>
+                Login
+              </NavLink>
+            </li>
+          }
+
+          {authUser &&
+            <li>
+              <NavLink
+                to="book/new"
+                className={({ isActive }) =>
+                  isActive ? "navbar-active" : undefined}>
+                Add Book
+              </NavLink>
+            </li>
+          }
+
+          {authUser &&
+            <li>
+              <NavLink
+                to={`users/${authUser._id}`}
+                className={({ isActive }) =>
+                  isActive ? "navbar-active" : undefined}>
+                Profile
+              </NavLink>
+            </li>
+          }
+
+          {authUser &&
+            <li>
+              <NavLink
+                to="settings"
+                className={({ isActive }) =>
+                  isActive ? "navbar-active" : undefined}>
+                Settings
+              </NavLink>
+            </li>
+          }
+
+          {authUser &&
+            <li>
+              <button onClick={ handleLogout }>Logout</button>
+            </li>
+          }
+        </ul>
+      }
+      {/*----- /Collapsed links -----*/}
     </div>
   );
 };

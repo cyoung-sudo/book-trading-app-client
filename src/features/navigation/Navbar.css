@@ -14,8 +14,17 @@
   font-weight: bold;
 }
 
+#navbar-collapse-toggle button {
+  height: 100%;
+  padding-right: 1rem;
+  background: none;
+  color: white;
+  border: none;
+}
+
+/* ------ Expanded links ----- */
 #navbar-links {
-  display: flex;
+  display: none;
   list-style: none;
 }
 
@@ -48,7 +57,58 @@
   cursor: pointer;
   text-decoration: underline;
 }
+/* ------ /Expanded links ----- */
+
+/* ------ Collapsed links ----- */
+#navbar-collapsed-links {
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: var(--navbar-height);
+  background-color: var(--light-dark-color);
+}
+
+#navbar-collapsed-links li {
+  text-align: center;
+}
+
+#navbar-collapsed-links li a {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+#navbar-collapsed-links li button {
+  width: 100%;
+  padding: 1rem;
+  background: none;
+  color: white;
+  font-size: var(--default-font);
+  border: none;
+  text-decoration: none;
+}
+/* ------ /Collapsed links ----- */
 
 .navbar-active {
   background-color: var(--lighter-color);
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #navbar-collapse-toggle {
+    display: none;
+  }
+
+  #navbar-links {
+    display: flex;
+  }
+
+  #navbar-collapsed-links {
+    display: none;
+  }
 }
