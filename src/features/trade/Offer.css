@@ -6,6 +6,66 @@
   padding: 2rem 1rem;
 }
 
+#offer hr {
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+#offer-header {
+  margin-bottom: 1rem;
+}
+
 #offer-pendingTradesDisplay-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-bottom: 1rem;
 }
+
+#offer-requestsDisplay-wrapper,
+#offer-offersDisplay-wrapper {
+  width: 100%;
+}
+
+#offer-offersDisplay-wrapper {
+  margin-top: 1rem;
+}
+
+#offer-booksDisplay-wrapper {
+  width: 100%;
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #offer-requestsDisplay-wrapper {
+    width: 40%;
+  }
+
+  #offer-offersDisplay-wrapper {
+    width: 40%;
+    margin-top: 0;
+  }
+
+  #offer-booksDisplay-wrapper {
+    width: 80%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #offer-requestsDisplay-wrapper {
+    width: 40%;
+  }
+
+  #offer-offersDisplay-wrapper {
+    width: 40%;
+    margin-top: 0;
+  }
+
+  #offer-booksDisplay-wrapper {
+    width: 60%;
+  }
+}
+/* ----- /Breakpoints ----- */

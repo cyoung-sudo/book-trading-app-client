@@ -1,12 +1,60 @@
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .searchBar-properties {
   display: flex;
+  margin-bottom: 0.5rem;
+  list-style: none;
+}
+
+.searchBar-properties button {
+  padding: 0.3rem;
+  font-size: var(--default-font);
+  border: 1px solid var(--light-dark-color);
+}
+
+.searchBar-properties button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* First child */
+.searchBar-properties li:first-child button {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+/* Last child */
+.searchBar-properties li:last-child button {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* All but last child */
+.searchBar-properties li:not(:last-child) button {
+  border-right: none;
 }
 
 .searchBar-form {
   display: flex;
 }
 
-.searchBar-active {
-  background-color: gray;
+.searchBar-field input,
+.searchBar-submit input {
+  padding: 0.3rem 0.5rem;
+  font-size: var(--default-font);
+}
+
+.searchBar-submit input:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.searchBar-property-active {
+  background-color: var(--light-dark-color);
   color: white;
 }

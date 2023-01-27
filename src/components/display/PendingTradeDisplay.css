@@ -1,3 +1,56 @@
-#pendingTradeDisplay li {
+.pendingTradeDisplay {
+  padding: 0.5rem;
+  background-color: var(--light-color);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.pendingTradeDisplay-header {
+  margin-bottom: 0.5rem;
+}
+
+.pendingTradeDisplay-books {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem;
+  background-color: var(--light-dark-color);
+  border-radius: 0.5rem;
+}
+
+.pendingTradeDisplay-books li {
+  display: flex;
+  margin: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  color: white;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+}
+
+.pendingTradeDisplay-books li button {
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 3px;
+}
+
+.pendingTradeDisplay-books li button:hover {
+  cursor: pointer;
+}
+
+.pendingTradeDisplay-submit button {
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  background-color: var(--light-dark-color);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.pendingTradeDisplay-submit button:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

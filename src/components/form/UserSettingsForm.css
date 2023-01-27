@@ -1,0 +1,34 @@
+#userSettingsForm {
+  padding: 2rem;
+  background-color: var(--light-color);
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+#userSettingsForm input {
+  padding: 0.3rem 0.5rem;
+  font-size: var(--default-font);
+}
+
+.userSettingsForm-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.userSettingsForm-field label {
+  margin-bottom: 0.3rem;
+}
+
+.userSettingsForm-submit input {
+  background-color: var(--light-dark-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+.userSettingsForm-submit input:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

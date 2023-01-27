@@ -57,6 +57,11 @@ export default function Offer() {
       };
   
       setOffers(state => [...state, newOffer]);
+
+      dispatch(setPopup({
+        message: "Book offered",
+        type: "success"
+      }));
     } else {
       dispatch(setPopup({
         message: "Book already offered",
@@ -103,18 +108,26 @@ export default function Offer() {
         </div>
 
         <div id="offer-pendingTradesDisplay-wrapper">
-          <PendingTradeDisplay 
-            books={ requests }
-            mode="request"
-            active={ false }/>
+          <div id="offer-requestsDisplay-wrapper">
+            <PendingTradeDisplay 
+              books={ requests }
+              mode="request"
+              active={ false }/>
+          </div>
 
-          <PendingTradeDisplay 
-            books={ offers }
-            mode="offer"
-            active={ true }
-            removeBook={ removeBook }
-            handleSubmit={ handleSubmit }/>
+          {(offers.length > 0) &&
+            <div id="offer-offersDisplay-wrapper">
+              <PendingTradeDisplay 
+                books={ offers }
+                mode="offer"
+                active={ true }
+                removeBook={ removeBook }
+                handleSubmit={ handleSubmit }/>
+            </div>
+          }
         </div>
+
+        <hr/>
   
         <div id="offer-booksDisplay-wrapper">
           <BooksDisplay 

@@ -15,8 +15,10 @@ export default function Popup() {
 
   //----- Set timer for popup
   useEffect(() => {
-    // Scroll to top of page
-    window.scrollTo(0, 0);
+    if(message !== "") {
+      // Scroll to top of page
+      window.scrollTo(0, 0);
+    }
 
     // 3sec duration
     timerId.current = setTimeout(() => {

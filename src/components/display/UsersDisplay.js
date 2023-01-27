@@ -9,27 +9,32 @@ import Pagination from "../pagination/Pagination";
 export default function UsersDisplay({ users }) {
   // Pagination
   const [pageContent, setPageContent] = useState([]);
+  const [page, setPage] = useState(1);
 
   if(users) {
     return (
-      <ul id="usersDisplay">
+      <div id="usersDisplay">
         <div id="usersDisplay-pagination-wrapper">
           <Pagination
             items={ users }
             itemsPerPage={ 10 }
-            setPageContent={ setPageContent }/>
+            page={ page }
+            setPageContent={ setPageContent }
+            setPage={ setPage }/>
         </div>
 
-        {pageContent.map((user, idx) => (
-          <li key={ idx }>
-            <div>{ user.username }</div>
-            <div>Joined: { user.createdAt }</div>
-            <div>
-              <Link to={`/users/${user._id}`}>View Profile</Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+        <ul id="usersDisplay-list">
+          {pageContent.map((user, idx) => (
+            <li key={ idx }>
+              <div className="usersDisplay-list-username">{ user.username }</div>
+              <div>Joined: { new Date(user.createdAt).toDateString() }</div>
+              <div>
+                <Link to={`/users/${user._id}`}>View Profile</Link>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   }
 };

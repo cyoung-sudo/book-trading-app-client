@@ -5,3 +5,94 @@
   min-height: calc(100vh - var(--navbar-height));
   padding: 2rem 1rem;
 }
+
+#userProfile hr {
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+#userProfile-header {
+  margin-bottom: 1rem;
+}
+
+#userProfile-options {
+  margin-bottom: 1rem;
+}
+
+#userProfile-options a {
+  padding: 0.3rem 0.5rem;
+  background-color: var(--light-dark-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#userProfile-options a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#userProfile-modes {
+  margin-bottom: 1rem;
+}
+
+#userProfile-modes button {
+  padding: 0.3rem;
+  font-size: var(--default-font);
+  border: 1px solid var(--light-dark-color);
+}
+
+#userProfile-modes button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* First child */
+#userProfile-modes button:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+/* Last child */
+#userProfile-modes button:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* All but last child */
+#userProfile-modes button:not(:last-child) {
+  border-right: none;
+}
+
+#userProfile-booksDisplay-wrapper,
+#userProfile-requestsDisplay-wrapper,
+#userProfile-offersDisplay-wrapper {
+  width: 100%;
+}
+
+.userProfile-mode-active {
+  background-color: var(--light-dark-color);
+  color: white;
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #userProfile-booksDisplay-wrapper,
+  #userProfile-requestsDisplay-wrapper,
+  #userProfile-offersDisplay-wrapper {
+    width: 80%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #userProfile-booksDisplay-wrapper,
+  #userProfile-requestsDisplay-wrapper,
+  #userProfile-offersDisplay-wrapper {
+    width: 60%;
+  }
+}
+/* ----- /Breakpoints ----- */

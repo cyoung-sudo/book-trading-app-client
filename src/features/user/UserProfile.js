@@ -184,10 +184,26 @@ export default function UserProfile() {
         }
 
         <div id="userProfile-modes">
-          <button onClick={() => setMode("books")}>Books</button>
-          <button onClick={() => setMode("requests")}>Requests</button>
-          <button onClick={() => setMode("offers")}>Offers</button>
+          <button
+            className={(mode === "books" ? "userProfile-mode-active" : undefined)}
+            onClick={() => setMode("books")}>
+            Books
+          </button>
+
+          <button
+            className={(mode === "requests" ? "userProfile-mode-active" : undefined)}
+            onClick={() => setMode("requests")}>
+            Requests
+          </button>
+
+          <button
+            className={(mode === "offers" ? "userProfile-mode-active" : undefined)}
+            onClick={() => setMode("offers")}>
+            Offers
+          </button>
         </div>
+
+        <hr/>
 
         {(mode === "books") &&
           <div id="userProfile-booksDisplay-wrapper">

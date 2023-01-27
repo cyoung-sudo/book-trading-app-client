@@ -1,11 +1,8 @@
 import "./Pagination.css";
 // React
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-export default function Pagination({ items, itemsPerPage, setPageContent }) {
-  // Current page
-  const [page, setPage] = useState(1);
-
+export default function Pagination({ items, itemsPerPage, page, setPageContent, setPage }) {
   //----- Set page content
   useEffect(() => {
     let start = (page - 1) * itemsPerPage;

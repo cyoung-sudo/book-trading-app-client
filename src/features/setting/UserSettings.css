@@ -6,6 +6,56 @@
   padding: 2rem 1rem;
 }
 
+#userSettings-header {
+  margin-bottom: 1rem;
+}
+
+#userSettings-form-wrapper {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#userSettings-options {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--light-color);
+  border-radius: 0.5rem;
+}
+
 .userSettings-option {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.userSettings-option button {
+  padding: 0.3rem 0.5rem;
+  background-color: var(--light-dark-color);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+}
+
+.userSettings-option button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #userSettings-form-wrapper,
+  #userSettings-options {
+    width: 70%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #userSettings-form-wrapper,
+  #userSettings-options {
+    width: 50%;
+  }
+}
+/* ----- /Breakpoints ----- */

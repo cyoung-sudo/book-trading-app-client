@@ -54,6 +54,11 @@ export default function Request() {
       };
   
       setRequests(state => [...state, newRequest]);
+
+      dispatch(setPopup({
+        message: "Book requested",
+        type: "success"
+      }));
     } else {
       dispatch(setPopup({
         message: "Book already requested",
@@ -77,6 +82,7 @@ export default function Request() {
 
   //----- Start offer
   const handleSubmit = () => {
+    // Redirect to offers page
     navigate("/trades/offer", { state: { recipientUsername, recipientId, requests } });
   };
 
@@ -87,14 +93,18 @@ export default function Request() {
           <h1>Trade Request</h1>
         </div>
   
-        <div id="request-requestsDisplay-wrapper">
-          <PendingTradeDisplay 
-            books={ requests }
-            mode="request"
-            active={ true }
-            removeBook={ removeBook }
-            handleSubmit={ handleSubmit }/>
-        </div>
+        {(requests.length > 0) &&
+          <div id="request-requestsDisplay-wrapper">
+            <PendingTradeDisplay 
+              books={ requests }
+              mode="request"
+              active={ true }
+              removeBook={ removeBook }
+              handleSubmit={ handleSubmit }/>
+          </div>
+        }
+
+        {(requests.length > 0) && <hr/>}
   
         <div id="request-booksDisplay-wrapper">
           <BooksDisplay 

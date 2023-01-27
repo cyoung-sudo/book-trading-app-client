@@ -1,0 +1,56 @@
+#booksDisplay-searchBar-wrapper {
+  margin-bottom: 1rem;
+}
+
+#booksDisplay-pagination-wrapper {
+  margin-bottom: 1rem;
+}
+
+#booksDisplay-list {
+  list-style: none;
+}
+
+#booksDisplay-list li {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--light-color);
+  text-align: center;
+}
+
+#booksDisplay-list li div:not(:last-child)  {
+  margin-bottom: 0.5rem;
+}
+
+#booksDisplay-list li a {
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  background-color: var(--light-dark-color);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+#booksDisplay-list li a:hover {
+  text-decoration: underline;
+}
+
+#booksDisplay-list li button {
+  padding: 0.3rem 0.5rem;
+  background-color: var(--light-dark-color);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+}
+
+#booksDisplay-list li button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.booksDisplay-list-title {
+  font-size: 1.2rem;
+}

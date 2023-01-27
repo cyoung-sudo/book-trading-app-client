@@ -1,3 +1,59 @@
-.tradesDisplay-books {
+#tradesDisplay-pagination-wrapper {
+  margin-bottom: 1rem;
+}
+
+#tradesDisplay-list {
+  list-style: none;
+}
+
+.tradesDisplay-trade {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--light-color);
+  text-align: center;
+}
+
+.tradesDisplay-trade div:not(:last-child)  {
+  margin-bottom: 0.5rem;
+}
+
+.tradesDisplay-trade a {
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  background-color: var(--light-dark-color);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.tradesDisplay-trade a:hover {
+  text-decoration: underline;
+}
+
+.tradesDisplay-trade-info {
   display: flex;
+  justify-content: space-around;
+}
+
+.tradesDisplay-trade-username {
+  font-size: 1.2rem;
+}
+
+.tradesDisplay-trade-books {
+  margin-bottom: 0.5em;
+  background-color: var(--light-dark-color);
+  border-radius: 0.5rem;
+  list-style: none;
+}
+
+.tradesDisplay-trade-books li {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  color: white;
+  border: 1px solid white;
+  border-radius: 0.5rem;
 }

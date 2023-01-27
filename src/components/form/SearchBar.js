@@ -2,7 +2,7 @@ import "./SearchBar.css";
 // React
 import { useState, useEffect } from "react";
 
-export default function SearchBar({ items, itemProperties, setSearchContent }) {
+export default function SearchBar({ items, itemProperties, setSearchContent, setPage }) {
   // Controlled input
   const [term, setTerm] = useState("");
   // Property
@@ -29,6 +29,7 @@ export default function SearchBar({ items, itemProperties, setSearchContent }) {
     });
     
     setSearchContent(results);
+    setPage(1);
   };
 
   return (
@@ -38,7 +39,7 @@ export default function SearchBar({ items, itemProperties, setSearchContent }) {
           {itemProperties.map((property, idx) => (
             <li key={ idx }>
               <button
-                className={(currentProperty === property ? "searchBar-active" : undefined)}
+                className={(currentProperty === property ? "searchBar-property-active" : undefined)}
                 onClick={() => setCurrentProperty(property)}>
                 { property }
               </button>
@@ -56,7 +57,7 @@ export default function SearchBar({ items, itemProperties, setSearchContent }) {
         </div>
 
         <div className="searchBar-submit">
-          <input type="submit" value="Submit"/>
+          <input type="submit" value="Search"/>
         </div>
       </form>
     </div>

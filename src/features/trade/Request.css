@@ -5,3 +5,45 @@
   min-height: calc(100vh - var(--navbar-height));
   padding: 2rem 1rem;
 }
+
+#request hr {
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+#request-header {
+  margin-bottom: 1rem;
+}
+
+#request-requestsDisplay-wrapper {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#request-booksDisplay-wrapper {
+  width: 100%;
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #request-requestsDisplay-wrapper {
+    width: 40%;
+  }
+
+  #request-booksDisplay-wrapper {
+    width: 80%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #request-requestsDisplay-wrapper {
+    width: 40%;
+  }
+
+  #request-booksDisplay-wrapper {
+    width: 60%;
+  }
+}
+/* ----- /Breakpoints ----- */

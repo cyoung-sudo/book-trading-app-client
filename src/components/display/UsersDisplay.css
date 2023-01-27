@@ -1,0 +1,38 @@
+#usersDisplay-pagination-wrapper {
+  margin-bottom: 1rem;
+}
+
+#usersDisplay-list {
+  list-style: none;
+}
+
+#usersDisplay-list li {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--light-color);
+  text-align: center;
+}
+
+#usersDisplay-list li div:not(:last-child)  {
+  margin-bottom: 0.5rem;
+}
+
+#usersDisplay-list li a {
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  background-color: var(--light-dark-color);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+#usersDisplay-list li a:hover {
+  text-decoration: underline;
+}
+
+.usersDisplay-list-username {
+  font-size: 1.2rem;
+}

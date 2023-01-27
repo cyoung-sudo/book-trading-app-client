@@ -5,3 +5,27 @@
   min-height: calc(100vh - var(--navbar-height));
   padding: 2rem 1rem;
 }
+
+#allBooks-header {
+  margin-bottom: 1rem;
+}
+
+#allBooks-booksDisplay-wrapper {
+  width: 100%;
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #allBooks-booksDisplay-wrapper {
+    width: 80%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #allBooks-booksDisplay-wrapper {
+    width: 60%;
+  }
+}
+/* ----- /Breakpoints ----- */

@@ -5,3 +5,27 @@
   min-height: calc(100vh - var(--navbar-height));
   padding: 2rem 1rem;
 }
+
+#login-header {
+  margin-bottom: 1rem;
+}
+
+#login-authForm-wrapper {
+  width: 100%;
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #login-authForm-wrapper {
+    width: 70%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #login-authForm-wrapper {
+    width: 50%;
+  }
+}
+/* ----- /Breakpoints ----- */
