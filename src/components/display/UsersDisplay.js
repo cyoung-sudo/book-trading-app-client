@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 // Components
 import Pagination from "../pagination/Pagination";
+import EmptyList from "../static/EmptyList";
 
 export default function UsersDisplay({ users }) {
   // Pagination
@@ -23,17 +24,21 @@ export default function UsersDisplay({ users }) {
             setPage={ setPage }/>
         </div>
 
-        <ul id="usersDisplay-list">
-          {pageContent.map((user, idx) => (
-            <li key={ idx }>
-              <div className="usersDisplay-list-username">{ user.username }</div>
-              <div>Joined: { new Date(user.createdAt).toDateString() }</div>
-              <div>
-                <Link to={`/users/${user._id}`}>View Profile</Link>
-              </div>
-            </li>
-          ))}
-        </ul>
+        {(pageContent.length > 0) &&
+          <ul id="usersDisplay-list">
+            {pageContent.map((user, idx) => (
+              <li key={ idx }>
+                <div className="usersDisplay-list-username">{ user.username }</div>
+                <div>Joined: { new Date(user.createdAt).toDateString() }</div>
+                <div>
+                  <Link to={`/users/${user._id}`}>View Profile</Link>
+                </div>
+              </li>
+            ))}
+          </ul>
+        }
+
+        {(pageContent.length <= 0) && <EmptyList itemType="user"/>}
       </div>
     );
   }

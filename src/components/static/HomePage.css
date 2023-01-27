@@ -1,7 +1,23 @@
 #homePage {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-height: calc(100vh - var(--navbar-height));
-  padding: 2rem 1rem;
+}
+
+#homePage-header {
+  margin-bottom: 1rem;
+}
+
+#homePage-content {
+  padding: 2rem;
+  background-color: var(--light-color);
+  border-radius: 0.5rem;
+}
+
+#homePage-content div {
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  text-align: center;
 }

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 // Components
 import Pagination from "../pagination/Pagination";
+import EmptyList from "../static/EmptyList";
 
 export default function TradesDisplay({ trades, ownership, mode, handleAccept, handleDecline }) {
   // Pagination
@@ -23,44 +24,48 @@ export default function TradesDisplay({ trades, ownership, mode, handleAccept, h
             setPage={ setPage }/>
         </div>
 
-        <ul id="tradesDisplay-list">
-          {pageContent.map((trade, idx) => (
-            <li className="tradesDisplay-trade" key={ idx }>
-              <div className="tradesDisplay-trade-info">
-                <div className="tradesDisplay-trade-group">
-                  <div className="tradesDisplay-trade-username">{ trade.initiatorUsername }</div>
-                  <ul className="tradesDisplay-trade-books">
-                    {trade.offer.map((book, idx) => (
-                      <li key={ idx }>{ book.bookTitle }</li>
-                    ))}
-                  </ul>
-                  <div>
-                    <Link to={`/users/${trade.initiatorId}`}>View Profile</Link>
+        {(pageContent.length > 0) &&
+          <ul id="tradesDisplay-list">
+            {pageContent.map((trade, idx) => (
+              <li className="tradesDisplay-trade" key={ idx }>
+                <div className="tradesDisplay-trade-info">
+                  <div className="tradesDisplay-trade-group">
+                    <div className="tradesDisplay-trade-username">{ trade.initiatorUsername }</div>
+                    <ul className="tradesDisplay-trade-books">
+                      {trade.offer.map((book, idx) => (
+                        <li key={ idx }>{ book.bookTitle }</li>
+                      ))}
+                    </ul>
+                    <div>
+                      <Link to={`/users/${trade.initiatorId}`}>View Profile</Link>
+                    </div>
+                  </div>
+
+                  <div className="tradesDisplay-trade-group">
+                    <div className="tradesDisplay-trade-username">{ trade.recipientUsername }</div>
+                    <ul className="tradesDisplay-trade-books">
+                      {trade.request.map((book, idx) => (
+                        <li key={ idx }>{ book.bookTitle }</li>
+                      ))}
+                    </ul>
+                    <div>
+                      <Link to={`/users/${trade.recipientId}`}>View Profile</Link>
+                    </div>
                   </div>
                 </div>
 
-                <div className="tradesDisplay-trade-group">
-                  <div className="tradesDisplay-trade-username">{ trade.recipientUsername }</div>
-                  <ul className="tradesDisplay-trade-books">
-                    {trade.request.map((book, idx) => (
-                      <li key={ idx }>{ book.bookTitle }</li>
-                    ))}
-                  </ul>
-                  <div>
-                    <Link to={`/users/${trade.recipientId}`}>View Profile</Link>
+                {(mode === "profile") && ownership &&
+                  <div className="tradesDisplay-trade-choice">
+                    <button onClick={() => handleAccept(trade)}>Accept</button>
+                    <button onClick={() => handleDecline(trade._id)}>Decline</button>
                   </div>
-                </div>
-              </div>
+                }
+              </li>
+            ))}
+          </ul>
+        }
 
-              {(mode === "profile") && ownership &&
-                <div className="tradesDisplay-trade-choice">
-                  <button onClick={() => handleAccept(trade)}>Accept</button>
-                  <button onClick={() => handleDecline(trade._id)}>Decline</button>
-                </div>
-              }
-            </li>
-          ))}
-        </ul>
+        {(pageContent.length <= 0) && <EmptyList itemType="trade"/>}
       </div>
     );
   }

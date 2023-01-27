@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 // Components
 import Pagination from "../pagination/Pagination";
 import SearchBar from "../form/SearchBar";
+import EmptyList from "../static/EmptyList";
 
 export default function BooksDisplay({ books, ownership, mode, handleDelete , addBook }) {
   // Search bar
@@ -34,29 +35,33 @@ export default function BooksDisplay({ books, ownership, mode, handleDelete , ad
             setPage={ setPage }/>
         </div>
 
-        <ul id="booksDisplay-list">
-          {pageContent.map((book, idx) => (
-            <li key={ idx }>
-              <div className="booksDisplay-list-title">{ book.title }</div>
-              <div>Description: { book.description }</div>
-              <div>Owner: { book.ownerUsername }</div>
-              <div>Date added: { new Date(book.createdAt).toDateString() }</div>
-              <div>
-                {(mode === "display") &&
-                  <Link to={`/users/${book.ownerId}`}>View Owner Profile</Link>
-                }
-                {(mode === "profile") && (ownership === true) && 
-                  <button onClick={() => handleDelete(book._id)}>Delete</button>
-                }
-                {(mode === "request" || mode === "offer") &&
-                  <button onClick={() => addBook(book._id, book.title)}>
-                    {mode === "request" ? "Request" : "Offer"}
-                  </button>
-                }
-              </div>
-            </li>
-          ))}
-        </ul>
+        {(pageContent.length > 0) &&
+          <ul id="booksDisplay-list">
+            {pageContent.map((book, idx) => (
+              <li key={ idx }>
+                <div className="booksDisplay-list-title">{ book.title }</div>
+                <div>Description: { book.description }</div>
+                <div>Owner: { book.ownerUsername }</div>
+                <div>Date added: { new Date(book.createdAt).toDateString() }</div>
+                <div>
+                  {(mode === "display") &&
+                    <Link to={`/users/${book.ownerId}`}>View Owner Profile</Link>
+                  }
+                  {(mode === "profile") && (ownership === true) && 
+                    <button onClick={() => handleDelete(book._id)}>Delete</button>
+                  }
+                  {(mode === "request" || mode === "offer") &&
+                    <button onClick={() => addBook(book._id, book.title)}>
+                      {mode === "request" ? "Request" : "Offer"}
+                    </button>
+                  }
+                </div>
+              </li>
+            ))}
+          </ul>
+        }
+
+        {(pageContent.length <= 0) && <EmptyList itemType="book"/>}
       </div>
     );
   }
