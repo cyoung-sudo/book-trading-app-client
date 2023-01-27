@@ -103,7 +103,12 @@ export default function UserProfile() {
 
   //----- Delete given book
   const handleDelete = id => {
-    bookAPI.deleteBook(id)
+    // Delete related trades
+    tradeAPI.deleteRelated(id)
+    .then(res => {
+      // Delete book
+      return bookAPI.deleteBook(id)
+    })
     .then(res => {
       if(res.data.success) {
         dispatch(setPopup({
