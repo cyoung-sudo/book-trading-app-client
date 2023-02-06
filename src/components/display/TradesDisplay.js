@@ -27,7 +27,10 @@ export default function TradesDisplay({ trades, ownership, mode, handleAccept, h
         {(pageContent.length > 0) &&
           <ul id="tradesDisplay-list">
             {pageContent.map((trade, idx) => (
-              <li className="tradesDisplay-trade" key={ idx }>
+              <li 
+                data-testid="tradesDisplay-trade"
+                className="tradesDisplay-trade" 
+                key={ idx }>
                 <div className="tradesDisplay-trade-info">
                   <div className="tradesDisplay-trade-group">
                     <div className="tradesDisplay-trade-username">{ trade.initiatorUsername }</div>
@@ -56,8 +59,10 @@ export default function TradesDisplay({ trades, ownership, mode, handleAccept, h
 
                 {(mode === "profile") && ownership &&
                   <div className="tradesDisplay-trade-choice">
-                    <button onClick={() => handleAccept(trade)}>Accept</button>
-                    <button onClick={() => handleDecline(trade._id)}>Decline</button>
+                    <button onClick={() => handleAccept(trade)}>
+                      Accept</button>
+                    <button onClick={() => handleDecline(trade._id)}>
+                      Decline</button>
                   </div>
                 }
               </li>

@@ -47,6 +47,14 @@ const routesConfig = [
         element: <AllBooks/>
       },
       {
+        path: "books/new",
+        element: (
+          <AuthWrapper>
+            <AddBook/>
+          </AuthWrapper>
+        )
+      },
+      {
         path: "trades",
         element: <AllTrades/>
       },
@@ -71,14 +79,6 @@ const routesConfig = [
         element: (
           <AuthWrapper>
             <UserSettings/>
-          </AuthWrapper>
-        )
-      },
-      {
-        path: "book/new",
-        element: (
-          <AuthWrapper>
-            <AddBook/>
           </AuthWrapper>
         )
       }

@@ -33,7 +33,7 @@ export default function Navbar() {
       dispatch(resetUser());
 
       // Redirect to home page
-      navigate("/")
+      navigate("/");
     })
     .catch(err => console.log(err));
   };
@@ -104,7 +104,7 @@ export default function Navbar() {
         {authUser &&
           <li>
             <NavLink
-              to="book/new"
+              to="books/new"
               className={({ isActive }) =>
                 isActive ? "navbar-active" : undefined}>
               Add Book
@@ -197,7 +197,7 @@ export default function Navbar() {
           {authUser &&
             <li>
               <NavLink
-                to="book/new"
+                to="books/new"
                 className={({ isActive }) =>
                   isActive ? "navbar-active" : undefined}>
                 Add Book

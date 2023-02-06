@@ -12,9 +12,16 @@ export default function PendingTradeDisplay({ books, mode, active, removeBook, h
 
         <ul className="pendingTradeDisplay-books">
           {books.map((book, idx) => (
-            <li key={ idx }>
+            <li 
+              data-testid="pendingTradeDisplay-book"
+              key={ idx }>
               <div>{ book.bookTitle }</div>
-              {active && <button onClick={() => removeBook(book.bookId)}><GrClose/></button>}
+              {active && 
+                <button
+                  data-testid="pendingTradeDisplay-remove"
+                  onClick={() => removeBook(book.bookId)}>
+                  <GrClose/>
+                </button>}
             </li>
           ))}
         </ul>

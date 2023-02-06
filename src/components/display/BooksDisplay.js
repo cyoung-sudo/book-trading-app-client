@@ -38,7 +38,9 @@ export default function BooksDisplay({ books, ownership, mode, handleDelete , ad
         {(pageContent.length > 0) &&
           <ul id="booksDisplay-list">
             {pageContent.map((book, idx) => (
-              <li key={ idx }>
+              <li 
+                data-testid="booksDisplay-book"
+                key={ idx }>
                 <div className="booksDisplay-list-title">{ book.title }</div>
                 <div>Description: { book.description }</div>
                 <div>Owner: { book.ownerUsername }</div>
@@ -48,10 +50,13 @@ export default function BooksDisplay({ books, ownership, mode, handleDelete , ad
                     <Link to={`/users/${book.ownerId}`}>View Owner Profile</Link>
                   }
                   {(mode === "profile") && (ownership === true) && 
-                    <button onClick={() => handleDelete(book._id)}>Delete</button>
+                    <button 
+                      onClick={() => handleDelete(book._id)}>
+                      Delete</button>
                   }
                   {(mode === "request" || mode === "offer") &&
-                    <button onClick={() => addBook(book._id, book.title)}>
+                    <button 
+                      onClick={() => addBook(book._id, book.title)}>
                       {mode === "request" ? "Request" : "Offer"}
                     </button>
                   }

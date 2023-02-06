@@ -51,6 +51,7 @@ export default function SearchBar({ items, itemProperties, setSearchContent, set
       <form className="searchBar-form" onSubmit={ handleSubmit }>
         <div className="searchBar-field">
           <input
+            data-testid="searchBar-term"
             onChange={e => setTerm(e.target.value)}
             type="text" 
             placeholder={ currentProperty }/>

@@ -27,7 +27,9 @@ export default function UsersDisplay({ users }) {
         {(pageContent.length > 0) &&
           <ul id="usersDisplay-list">
             {pageContent.map((user, idx) => (
-              <li key={ idx }>
+              <li 
+                data-testid="usersDisplay-user"
+                key={ idx }>
                 <div className="usersDisplay-list-username">{ user.username }</div>
                 <div>Joined: { new Date(user.createdAt).toDateString() }</div>
                 <div>
