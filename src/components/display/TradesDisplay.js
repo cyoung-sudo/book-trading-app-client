@@ -59,9 +59,13 @@ export default function TradesDisplay({ trades, ownership, mode, handleAccept, h
 
                 {(mode === "profile") && ownership &&
                   <div className="tradesDisplay-trade-choice">
-                    <button onClick={() => handleAccept(trade)}>
+                    <button 
+                      className="tradesDisplay-trade-accept"
+                      onClick={() => handleAccept(trade)}>
                       Accept</button>
-                    <button onClick={() => handleDecline(trade._id)}>
+                    <button 
+                      className="tradesDisplay-trade-decline"
+                      onClick={() => handleDecline(trade._id)}>
                       Decline</button>
                   </div>
                 }
