@@ -35,7 +35,7 @@ export default function TradesDisplay({ trades, ownership, mode, handleAccept, h
                 key={ idx }>
                 <div className="tradesDisplay-trade-info">
                   <div className="tradesDisplay-trade-group">
-                    <div className="tradesDisplay-trade-username">{ trade.initiatorUsername }</div>
+                    <div className="tradesDisplay-trade-username">{ trade.initiatorUsername }'s offer</div>
                     <ul className="tradesDisplay-trade-books">
                       {trade.offer.map((book, idx) => (
                         <li key={ idx }>{ book.bookTitle }</li>
