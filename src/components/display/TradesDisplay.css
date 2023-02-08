@@ -14,8 +14,8 @@
   text-align: center;
 }
 
-.tradesDisplay-trade div:not(:last-child)  {
-  margin-bottom: 0.5rem;
+.tradesDisplay-trade:not(:last-child)  {
+  margin-bottom: 1rem;
 }
 
 .tradesDisplay-trade a {
@@ -35,7 +35,18 @@
 
 .tradesDisplay-trade-info {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+}
+
+.tradesDisplay-trade-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tradesDisplay-trade-group  {
+  margin-bottom: 1rem;
 }
 
 .tradesDisplay-trade-username {
@@ -56,6 +67,18 @@
   color: white;
   border: 1px solid white;
   border-radius: 0.5rem;
+}
+
+.tradesDisplay-arrow-left {
+  display: none;
+}
+
+.tradesDisplay-arrow-down {
+  display: inline;
+}
+
+.tradesDisplay-trade-choice {
+  margin: 0;
 }
 
 .tradesDisplay-trade-choice button {
@@ -80,3 +103,29 @@
 .tradesDisplay-trade-decline {
   background-color: var(--error-color);
 }
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  .tradesDisplay-trade-info {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .tradesDisplay-trade-group {
+    margin: 0;
+  }
+
+  .tradesDisplay-arrow-left {
+    display: inline;
+  }
+
+  .tradesDisplay-arrow-down {
+    display: none;
+  }
+
+  .tradesDisplay-trade-choice {
+    margin-top: 1rem;
+  }
+}
+/* ----- /Breakpoints ----- */

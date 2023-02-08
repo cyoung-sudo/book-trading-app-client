@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 // Components
 import Pagination from "../pagination/Pagination";
 import EmptyList from "../static/EmptyList";
+// Icons
+import { BsFillArrowRightCircleFill, BsFillArrowDownCircleFill } from "react-icons/bs";
 
 export default function TradesDisplay({ trades, ownership, mode, handleAccept, handleDecline }) {
   // Pagination
@@ -42,6 +44,16 @@ export default function TradesDisplay({ trades, ownership, mode, handleAccept, h
                     <div>
                       <Link to={`/users/${trade.initiatorId}`}>View Profile</Link>
                     </div>
+                  </div>
+
+                  <div className="tradesDisplay-trade-group">
+                    <span className="tradesDisplay-arrow-left">
+                      <BsFillArrowRightCircleFill size={ 28 }/>
+                    </span>
+
+                    <span className="tradesDisplay-arrow-down">
+                      <BsFillArrowDownCircleFill size={ 28 }/>
+                    </span>
                   </div>
 
                   <div className="tradesDisplay-trade-group">
