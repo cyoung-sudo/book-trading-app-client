@@ -26,17 +26,6 @@ export const create = async (title, description, ownerUsername, ownerId) => {
   return res;
 };
 
-//----- Delete given book
-export const deleteBook = async id => {
-  const res = await api.request({
-    method: "DELETE",
-    data: { id },
-    url: "/api/book"
-  });
-
-  return res;
-};
-
 //----- Update given book
 export const updateBook = async (id, ownerUsername, ownerId) => {
   const res = await api.request({
@@ -51,11 +40,21 @@ export const updateBook = async (id, ownerUsername, ownerId) => {
   return res;
 };
 
+//----- Delete given book
+export const deleteBook = async id => {
+  const res = await api.request({
+    method: "DELETE",
+    url: `/api/book/${id}`
+  });
+
+  return res;
+};
+
 //----- Retrieve all books for user
 export const getForUser = async userId => {
   const res = await api.request({
     method: "GET",
-    url: `/api/book/${userId}`
+    url: `/api/book/user/${userId}`
   });
 
   return res;
@@ -65,7 +64,7 @@ export const getForUser = async userId => {
 export const deleteForUser = async userId => {
   const res = await api.request({
     method: "DELETE",
-    url: `/api/book/${userId}`
+    url: `/api/book/user/${userId}`
   });
 
   return res;
