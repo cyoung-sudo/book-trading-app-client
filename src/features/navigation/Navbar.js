@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPopup } from "../popup/slices/popupSlice";
 import { resetUser } from "../../appSlice";
 // Routing
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 // APIs
 import * as authAPI from "../../apis/authAPI";
 // Icons
@@ -41,7 +41,7 @@ export default function Navbar() {
   return (
     <div id="navbar">
       <div id="navbar-logo">
-        Book Trading Club
+        <Link to="/">Book Trading Club</Link>
       </div>
 
       <div id="navbar-collapse-toggle">
